@@ -1,4 +1,7 @@
-// subtract add  divide  multiply
+//===============================
+//       Clean Calc
+//     version 1.0.0
+//===============================
 
 var lastResult = null;
 
@@ -19,6 +22,14 @@ function divide(arg1, arg2) {
   return arg1 / arg2;
 }
 
-lastResult = add(5, 5); // 10
-lastResult = add(5, lastResult); // 5 +10
-console.log(lastResult); //15
+//------- v 1.1.0---------------
+
+function operateIntermediary(operation, arg1, arg2) {
+  // add , 5, 5,
+  return operation(arg1, arg2);
+}
+
+lastResult = operateIntermediary(add, 5, 10); // 15
+lastResult = operateIntermediary(multiply, 2, lastResult); // 2 * 15 = 30
+
+console.log(lastResult);
