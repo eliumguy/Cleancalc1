@@ -29,7 +29,17 @@ function operateIntermediary(operation, arg1, arg2) {
   return operation(arg1, arg2);
 }
 
-lastResult = operateIntermediary(add, 5, 10); // 15
-lastResult = operateIntermediary(multiply, 2, lastResult); // 2 * 15 = 30
+//---------v 1.2.0---------------------
 
-console.log(lastResult);
+function operate(operation, arg1, arg2) {
+  //  add 5 3  // add 5 no arg2
+  if (arg2) {
+    return (lastResult = operation(arg1, arg2)); //8
+  } else {
+    return (lastResult = operation(arg1, lastResult)); // 5 + 8  = 13
+  }
+}
+
+console.log(operate(add, 5, 3)); //8
+
+console.log(operate(add, 5)); // 13
